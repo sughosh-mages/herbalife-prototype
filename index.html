@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Herbalife WebAR Prototype</title>
+    <meta name="viewport"
+        content="width=device-width, user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script
+        src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+    <script src='js/aframe-ar-nft.js'></script>
+    <script src='js/aframe-extras.min.js'></script>
+    <script src="js/herbalife.js"></script>
+    <link rel="stylesheet" href="css/herbalife.css">
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+    <div class="arjs-loader">
+        <div class="arjs-loader-spinner"></div>
+    </div>
+    <div class="loader" style="display: none;" id="loadingDiv">
+        <div class="loader-spinner"></div>
+    </div>
+    <div class="buttons">
+        <button id="dosageButton" onclick="TapDosage();"></button>
+        <button id="ingredientButton" onclick="TapIngredients();"></button>
+        <button id="targetnutButton" onclick="TapTar();"></button>
+    </div>
+    <a-scene vr-mode-ui="enabled: false;"
+        renderer='logarithmicDepthBuffer: true;antialias: true; alpha: true; precision: mediump;' embedded
+        arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+        <a-assets>
+
+            <a-asset-item id="model" src="models/PCLR001_Sup_bottle_01_white_anim.gltf"></a-asset-item>
+        </a-assets>
+        <a-nft markerhandler emitevents="true" type='nft'
+            url='ARjsComponentTest/HerbalifelineProduct/textures/Herbalifeline' smooth="true" smoothCount="10"
+            smoothTolerance="0.01" smoothThreshold="5" id="AR_Scene">
+
+            <a-plane src="textures/logo.png" id="blackPlane_0" width="80" height="20" position="20 0 -140"
+                rotation="270 0 0" color="#FFFFF" transparent="True">
+            </a-plane>
+            <a-entity gltf-model="#model" scale="500 500 400" position="20 10 -50" rotation="270 0 0" class="clickable"
+                animation-mixer="loop: repeat"> </a-entity>
+        </a-nft>
+        <a-entity camera>
+    </a-scene>
+</body>
+
+</html>
