@@ -1,1 +1,1 @@
-# herbalife-prototype
+# Herbalife Web AR Prototype
